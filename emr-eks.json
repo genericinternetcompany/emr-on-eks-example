@@ -1,12 +1,12 @@
 {
     "name": "ParquetConversion",
     "virtualClusterId": "nklsfzglryd810f7qsa91l4yc",
-    "executionRoleArn": "arn:aws:iam::866696246352:role/EKS-management-Role",
+    "executionRoleArn": "arn:aws:iam::866696246352:role/EKS-EMR-Role",
     "releaseLabel": "emr-6.2.0-latest",
     "jobDriver": {
         "sparkSubmitJobDriver": {
             "entryPoint": "s3://mdigiacomi-emr-testbucket/test-processor.py",
-            "sparkSubmitParameters": "--conf spark.executors.instances=2 --conf spark.executors.memory=2G --conf spark.executor.cores=2 --conf spark.driver.cores=1"
+            "sparkSubmitParameters": "--conf spark.executors.instances=6 --conf spark.executors.memory=2G --conf spark.executor.cores=6 --conf spark.driver.cores=1"
         }
     },
     "configurationOverrides": {
