@@ -1,0 +1,32 @@
+{
+    "name": "ParquetConversion",
+    "virtualClusterId": "nklsfzglryd810f7qsa91l4yc",
+    "executionRoleArn": "arn:aws:iam::866696246352:role/EKS-management-Role",
+    "releaseLabel": "emr-6.2.0-latest",
+    "jobDriver": {
+        "sparkSubmitJobDriver": {
+            "entryPoint": "s3://mdigiacomi-emr-testbucket/test-processor.py",
+            "sparkSubmitParameters": "--conf spark.executors.instances=2 --conf spark.executors.memory=2G --conf spark.executor.cores=2 --conf spark.driver.cores=1"
+        }
+    },
+    "configurationOverrides": {
+        "applicationConfiguration": [
+            {
+                "classification": "spark-defaults",
+                "properties": {
+                    "spark.driver.memory": "2G"
+                }
+            }
+        ],
+        "monitoringConfiguration": {
+            "persistentAppUI": "ENABLED",
+            "cloudWatchMonitoringConfiguration": {
+                "logGroupName": "emr-on-eks",
+                "logStreamNamePrefix": "jobs"
+            },
+            "s3MonitoringConfiguration": {
+                "logUri": "s3://mdigiacomi-emr-testbucket/logs"
+            }
+        }
+    }
+}
