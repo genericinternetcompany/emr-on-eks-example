@@ -6,7 +6,7 @@
     "jobDriver": {
         "sparkSubmitJobDriver": {
             "entryPoint": "s3://mdigiacomi-emr-testbucket/test-processor.py",
-            "sparkSubmitParameters": "--conf spark.executors.instances=6 --conf spark.executors.memory=2G --conf spark.executor.cores=6 --conf spark.driver.cores=1"
+            "sparkSubmitParameters": "--conf spark.executors.instances=6 --conf spark.executors.memory=12G --conf spark.executor.cores=6 --conf spark.driver.cores=1"
         }
     },
     "configurationOverrides": {
@@ -25,7 +25,7 @@
                 "logStreamNamePrefix": "jobs"
             },
             "s3MonitoringConfiguration": {
-                "logUri": "s3://mdigiacomi-emr-testbucket/logs"
+                "logUri": "s3://mdigiacomi-emr-testbucket/logs/"
             }
         }
     }

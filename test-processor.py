@@ -26,16 +26,16 @@ if __name__ == '__main__':
                         FROM urls 
                         GROUP BY url_host_tld
                         ORDER BY Number_Of_Pages DESC""")
-    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/testparquet.parquet')
+    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/' + spark.sparkContext.applicationId + '/testparquet.parquet')
     sqlDF = spark.sql("""SELECT COUNT(*) AS count, url_host_registered_domain 
                         FROM urls 
                         WHERE url_host_tld = 'com'
                         GROUP BY url_host_registered_domain
                         ORDER BY count desc""")
-    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/testparquet2.parquet')
+    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/' + spark.sparkContext.applicationId + '/testparquet2.parquet')
     sqlDF = spark.sql("""SELECT COUNT(*) AS count, url_host_registered_domain
                         FROM urls 
                         WHERE url_host_tld = 'org'
                         GROUP BY url_host_registered_domain
                         ORDER BY count DESC""")
-    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/testparquet3.parquet')
+    sqlDF.write.parquet('s3://mdigiacomi-emr-testbucket/output/' + spark.sparkContext.applicationId + '/testparquet3.parquet')
